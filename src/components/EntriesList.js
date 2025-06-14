@@ -119,6 +119,7 @@ export default function EntriesList({ session, backendUrl }) {
         onChange={(e) => setFilter(e.target.value)}
         className="mb-4 px-3 py-2 border border-gray-300 rounded w-full max-w-md"
       />
+      {message && <div className="mb-2 text-red-600">{message}</div>}
       <div className="overflow-x-auto">
         <table className="w-full min-w-max bg-white border rounded">
           <thead>
