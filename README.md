@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Automatic Weekly Update Generator – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend for the **Automatic Weekly Update Generator**: a professional, full-stack application that helps users log daily work, receive reminders, and generate weekly summaries using Google Gemini LLM. The frontend is built with React (Vite), Tailwind CSS, and integrates with Supabase for authentication and backend API calls.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Magic Link Authentication** (Supabase)
+- **Daily Entry Logging** (create, view, edit)
+- **Weekly Report Generation** (with Gemini LLM)
+- **View/Edit All Entries**
+- **View All Weekly Reports** (filterable, resizable tables)
+- **User Settings** (timezone, reminders, PDF/email options)
+- **Responsive UI** (Tailwind CSS)
+- **Professional UX** (modals, spinners, copy-to-clipboard, etc.)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v18+ recommended)
+- npm or yarn
+- Supabase project (for auth and database)
+- Backend API (FastAPI, running separately)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
 
-### `npm run build`
+   ```bash
+   git clone <your-repo-url>
+   cd automatic_weekly_update/frontend
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Configure environment variables:**
 
-### `npm run eject`
+   Create a `.env` file in the root of `frontend/`:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   VITE_API_BASE_URL=http://localhost:8000  # or your FastAPI backend URL
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Start the development server:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   The app will be available at [http://localhost:5173](http://localhost:5173) (default Vite port).
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+  components/         # React components (EntriesList, WeeklyReportsList, etc.)
+  App.js              # Main app component
+  main.js             # Entry point
+  ...
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage
 
-### Code Splitting
+1. **Login:**  
+   Enter your email to receive a magic link (via Supabase). Click the link to authenticate.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Daily Entry:**  
+   Log your daily work. Edit previous entries as needed.
 
-### Analyzing the Bundle Size
+3. **Weekly Report:**  
+   Select a week, generate a summary (via Gemini LLM), and view/download/copy the report.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Settings:**  
+   Configure your timezone, reminder preferences, and PDF/email options.
 
-### Making a Progressive Web App
+5. **View/Edit Entries & Reports:**  
+   Use the tables to view, filter, and edit all your entries and weekly reports.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Customization
 
-### Advanced Configuration
+- **Styling:**  
+  Tailwind CSS is used for rapid, responsive UI development. Customize styles in `tailwind.config.js` or component classes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **API Integration:**  
+  All API calls are made to the FastAPI backend. Update `VITE_API_BASE_URL` as needed.
 
-### Deployment
+- **Authentication:**  
+  Supabase JS SDK handles magic link login and session management.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Deployment
 
-### `npm run build` fails to minify
+To build for production:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+# or
+yarn build
+```
+
+Deploy the contents of the `dist/` folder to your preferred hosting provider (Vercel, Netlify, etc.).
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+## License
+
+[MIT](../LICENSE) (or your chosen license)
+
+---
+
+**Questions?**  
+Open an issue or contact the maintainer.
