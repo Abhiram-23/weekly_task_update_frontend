@@ -7,7 +7,7 @@ import WeeklyReport from "./components/WeeklyReport";
 import EntriesList from "./components/EntriesList";
 import WeeklyReportsList from "./components/WeeklyReportsList";
 
-const backendUrl = "http://localhost:8000";
+const backendUrl = "https://task-update.onrender.com";
 
 function App() {
   const [session, setSession] = useState(null);
