@@ -25,6 +25,28 @@ function App() {
     return () => subscription.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    // When a session is detected, call the /me endpoint
+    if (session) {
+      fetch(`${backendUrl}/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            // If the response is not OK, log the error and sign the user out
+            console.error("Failed to sync user profile");
+            supabase.auth.signOut();
+          }
+        })
+        .catch((error) => {
+          console.error("Error syncing user profile:", error);
+          supabase.auth.signOut();
+        });
+    }
+  }, [session]);
+
   if (!session) {
     return <Login />;
   }
